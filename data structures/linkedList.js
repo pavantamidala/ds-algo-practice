@@ -37,18 +37,55 @@ class LinkedList {
     console.log(newTail.val);
     this.tail = newTail;
     this.length--;
+    //special case when length is 1
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
     return current;
+  }
+
+  shift() {
+    if (!this.length) {
+      return undefined;
+    }
+    let formerHead = this.head;
+    let newHead = this.head.next;
+    this.head = newHead;
+    this.length--;
+    if (this.length === 0) {
+      // this.head = null;
+      this.tail = null;
+    }
+    return formerHead;
+  }
+
+  unshift(val) {
+    let node = new Node(val);
+    if (!this.length) {
+      this.head = node;
+      this.tail = node;
+      this.length++;
+      return;
+    }
+    node.next = this.head;
+    this.head = node;
+    this.length++;
+    return this;
   }
 }
 
 let list = new LinkedList();
-list.push('hi');
-list.push('how');
-list.push('are');
-// console.log(list)
-let val = list.pop();
-console.log(val);
-console.log(list.length);
+// list.push('hi');
+// list.push('how');
+// list.push('are');
+list.unshift('hell');
+// console.info(list.shift())
+// list.pop()
+console.log(list);
+// let val = list.pop();
+// console.log(val);
+// console.log(list.length);
 
 //original solution
 
