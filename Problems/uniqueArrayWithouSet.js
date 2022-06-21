@@ -1,16 +1,5 @@
-function createCharMap(arr) {
-  let charMap = {};
-  for (let val of arr) {
-    if (!charMap[val]) {
-      charMap[val] = 1;
-    } else {
-      charMap[val] += charMap[val];
-    }
-  }
-  return charMap;
-}
+import createCharMap from '../utils/CharMap'
 function uniqueArr(arr) {
-  // return arr
   let charMap = createCharMap(arr);
   return Object.keys(charMap);
 }
