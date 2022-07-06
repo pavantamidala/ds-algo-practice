@@ -11,4 +11,4 @@ function confirmEnding(str, target) {
     return ans 
 }
 
-console.log(confirmEnding("Bastian", ""))
+console.log(confirmEnding("Bastian", "ia"))
