@@ -10,3 +10,5 @@ function smallestMultiple(limit, length) {
   }
   return ans;
 }
+
+console.log(smallestMultiple(3000, 10));
