@@ -154,9 +154,14 @@ class LinkedList {
   pop() {
     let current = this.head;
     let newTail = this.head;
+
+    if (!this.head) {
+      return undefined;
+    }
+
     while (current) {
       if (!current.next) {
-        console.log(newTail);
+        // console.log(newTail);
         this.tail = newTail;
         this.tail.next = null;
         this.length--;
@@ -168,15 +173,31 @@ class LinkedList {
     }
     return newTail;
   }
+  shift() {
+    if (!this.head) return undefined;
+    let temp = this.head;
+    this.head = temp.next;
+    this.length--;
+    return temp;
+  }
+  unshift(val) {
+    let newNode = new Node(val);
+    let oldHead = this.head;
+    this.head = newNode;
+    this.head.next = oldHead;
+    this.length++;
+    return this;
+  }
 }
 
 let list = new LinkedList();
-list.push('Hi');
-list.push('Hello');
-list.push('there');
-list.push('How');
-list.push('are');
-list.pop();
-list.pop();
+// list.push('Hi');
+// list.push('Hello');
+// list.push('there');
+// list.push('How');
+// list.push('are');
+// list.pop();
+// logObject(list.shift());
+list.unshift('pk');
 // console.log(list);
 logObject(list);
