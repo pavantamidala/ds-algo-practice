@@ -1,3 +1,5 @@
+// import util from 'util';
+import logObject from '../utils/logObject.js';
 // class Node {
 //   constructor(val) {
 //     this.val = val;
@@ -141,14 +143,40 @@ class LinkedList {
       this.head = newNode;
       this.tail = newNode;
     } else {
-      this.tail = newNode;
-      this.head.next = this.tail;
+      this.tail.next = newNode;
+      // this.head.next = this.tail;
+      this.tail = this.tail.next;
     }
     this.length++;
     return this;
   }
+
+  pop() {
+    let current = this.head;
+    let newTail = this.head;
+    while (current) {
+      if (!current.next) {
+        console.log(newTail);
+        this.tail = newTail;
+        this.tail.next = null;
+        this.length--;
+      } else {
+        newTail = current;
+      }
+      current = current.next;
+      // return previous;
+    }
+    return newTail;
+  }
 }
 
 let list = new LinkedList();
-
-console.log(list);
+list.push('Hi');
+list.push('Hello');
+list.push('there');
+list.push('How');
+list.push('are');
+list.pop();
+list.pop();
+// console.log(list);
+logObject(list);
