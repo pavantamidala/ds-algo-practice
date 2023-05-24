@@ -188,16 +188,56 @@ class LinkedList {
     this.length++;
     return this;
   }
+  get(index) {
+    let counter = 0;
+    let currentNode = this.head;
+    if (index < 0 || index > this.length) return null;
+    while (currentNode) {
+      if (counter === index) {
+        return currentNode;
+      }
+      counter++;
+      currentNode = currentNode.next;
+    }
+  }
+  set(index, value) {
+    let node = this.get(index);
+    if (!node) return false;
+    node.value = value;
+    return true;
+  }
+  insert(index, value) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) {
+      this.unshift(value);
+      return true;
+    }
+    if (index === this.length) {
+      this.push(value);
+      return true;
+    }
+    let newNode = new Node(value);
+    let preNode = this.get(index - 1);
+    let postNode = this.get(index);
+    preNode.next = newNode;
+    newNode.next = postNode;
+    this.length++;
+    return true;
+  }
 }
 
 let list = new LinkedList();
-// list.push('Hi');
-// list.push('Hello');
-// list.push('there');
-// list.push('How');
+list.push('Hi');
+list.push('Hello');
+list.push('there');
+list.push('How');
+list.insert(2, 'pavan');
+list.insert(10, 'k');
 // list.push('are');
+// logObject(list.get(4));
+// list.set(0, 'welcome');
 // list.pop();
 // logObject(list.shift());
-list.unshift('pk');
+// list.unshift('pk');
 // console.log(list);
 logObject(list);
