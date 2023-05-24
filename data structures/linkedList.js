@@ -224,6 +224,16 @@ class LinkedList {
     this.length++;
     return true;
   }
+  remove(index) {
+    if (index < 0 || index > this.length) return undefined;
+    if (index === this.length - 1) this.pop();
+    if (index === 0) this.shift();
+    let preNode = this.get(index - 1);
+    let postNode = this.get(index + 1);
+    preNode.next = postNode;
+    this.length--;
+    return true;
+  }
 }
 
 let list = new LinkedList();
@@ -231,8 +241,9 @@ list.push('Hi');
 list.push('Hello');
 list.push('there');
 list.push('How');
-list.insert(2, 'pavan');
-list.insert(10, 'k');
+list.remove(1);
+// list.insert(2, 'pavan');
+// list.insert(10, 'k');
 // list.push('are');
 // logObject(list.get(4));
 // list.set(0, 'welcome');
