@@ -44,15 +44,33 @@ class LinkedList {
     if (this.length === 1) return this.head;
     let currentNode = this.head;
     let counter = 0;
-    while (counter <= index) {
-      if (currentNode) {
+    while (currentNode) {
+      if (counter === index) {
+        return currentNode;
+      } else {
         currentNode = currentNode.next;
+        counter++;
       }
     }
     return currentNode;
   }
   pop() {
     if (!this.length) return false;
+    console.log(this.length);
+    if (this.length === 1) {
+      let temp = this.head;
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+      return temp;
+    }
+    let preNode = this.get(this.length - 2);
+    preNode.next = null;
+    let temp = this.tail;
+    this.tail = preNode;
+    // console.log(preNode);
+    this.length--;
+    return temp;
   }
 }
 
@@ -60,5 +78,8 @@ let list = new LinkedList();
 list.push('Hi');
 list.push('Hello');
 list.push('How');
-logObject(list.get(2));
-// logObject(list);
+// logObject(list.get(1));
+logObject(list.pop());
+logObject(list.pop());
+logObject(list.pop());
+logObject(list);
