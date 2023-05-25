@@ -72,14 +72,42 @@ class LinkedList {
     this.length--;
     return temp;
   }
+  set(index, value) {
+    if (index < 0 || index >= this.length) return false;
+    let node = this.get(index);
+    node.value = value;
+    return node;
+  }
+  shift() {
+    if (!this.length) return false;
+    let oldHead = this.head;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+      return oldHead;
+    }
+    this.head = oldHead.next;
+    this.length--;
+    return oldHead;
+  }
+  unshift(value) {
+    let newNode = new Node(value);
+    let oldHead = this.head;
+    this.head = newNode;
+    this.head.next = oldHead;
+    this.length++;
+    return this;
+  }
 }
 
 let list = new LinkedList();
 list.push('Hi');
 list.push('Hello');
-list.push('How');
+// list.push('How');
+// logObject(list.shift());
+list.unshift('pavan');
+
 // logObject(list.get(1));
-logObject(list.pop());
-logObject(list.pop());
-logObject(list.pop());
+// logObject(list.pop());
 logObject(list);
