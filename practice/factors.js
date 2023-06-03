@@ -13,4 +13,6 @@ function findFactors(number, limit) {
   return ans;
 }
 
-logObject(findFactors(10, 100));
+logObject(findFactors(60, 1000));
+logObject(findFactors(90, 1000));
+logObject(findFactors(150, 1000));
