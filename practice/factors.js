@@ -4,7 +4,9 @@ import logObject from '../utils/logObject.js';
 function findFactors(number, limit) {
   let ans = [];
   for (let i = 1; i < limit; i++) {
-    if (i % number == 0) {
+    // i = 10
+    // number = 30
+    if (number % i == 0) {
       ans.push(i);
     }
   }
